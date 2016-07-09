@@ -88,6 +88,7 @@ function getGlobal () {
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			global = JSON.parse(xhttp.responseText).points;
+			global += points % 3;
 			updateGlobal();
 		}
 	};
@@ -149,6 +150,7 @@ window.onload = function () {
     	document.cookie = 0;
 	} else {
 		points = parseInt(document.cookie);
+		lastIncrement = points - (points % 3);
 		document.getElementById('points').innerHTML = "" + points;
 	}
 	
